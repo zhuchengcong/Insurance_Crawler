@@ -2,58 +2,80 @@ package com.radinfo.safe.domain.http;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class CertiListData {
+public class CertiListData implements Serializable {
 
+    private static final long serialVersionUID = 919992945335285236L;
     @JsonProperty("certiNo")
-    private String certino;
+    private String certiNo;
     @JsonProperty("licenseNo")
-    private String licenseno;
+    private String licenseNo;
     @JsonProperty("engineNo")
-    private String engineno;
+    private String engineNo;
     @JsonProperty("appliName")
-    private String appliname;
+    private String appliName;
     @JsonProperty("insuredName")
-    private String insuredname;
+    private String insuredName;
     @JsonProperty("startDate")
-    private String startdate;
+    private String startDate;
     @JsonProperty("endDate")
-    private String enddate;
-    public void setCertino(String certino) {
-        this.certino = certino;
-    }
-    public String getCertino() {
-        return certino;
+    private String endDate;
+
+    public String getCertiNo() {
+        return certiNo;
     }
 
-    public void setLicenseno(String licenseno) {
-        this.licenseno = licenseno;
-    }
-    public String getLicenseno() {
-        return licenseno;
+    public void setCertiNo(String certiNo) {
+        this.certiNo = certiNo;
     }
 
-    public void setEngineno(String engineno) {
-        this.engineno = engineno;
-    }
-    public String getEngineno() {
-        return engineno;
+    public String getLicenseNo() {
+        return licenseNo;
     }
 
-    public void setAppliname(String appliname) {
-        this.appliname = appliname;
-    }
-    public String getAppliname() {
-        return appliname;
+    public void setLicenseNo(String licenseNo) {
+        this.licenseNo = licenseNo;
     }
 
-    public void setInsuredname(String insuredname) {
-        this.insuredname = insuredname;
-    }
-    public String getInsuredname() {
-        return insuredname;
+    public String getEngineNo() {
+        return engineNo;
     }
 
+    public void setEngineNo(String engineNo) {
+        this.engineNo = engineNo;
+    }
 
+    public String getAppliName() {
+        return appliName;
+    }
+
+    public void setAppliName(String appliName) {
+        this.appliName = appliName;
+    }
+
+    public String getInsuredName() {
+        return insuredName;
+    }
+
+    public void setInsuredName(String insuredName) {
+        this.insuredName = insuredName;
+    }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
 }

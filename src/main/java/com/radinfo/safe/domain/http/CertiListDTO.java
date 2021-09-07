@@ -8,37 +8,42 @@ import java.util.List;
 public class CertiListDTO implements Serializable {
     private static final long serialVersionUID = 8509177830938822853L;
     @JsonProperty("pageNo")
-    private int pageno;
+    private int pageNo;
     @JsonProperty("perPage")
-    private int perpage;
+    private int perPage;
     @JsonProperty("totalCount")
-    private int totalcount;
+    private int totalCount;
     private List<CertiListData> data;
-    public void setPageno(int pageno) {
-        this.pageno = pageno;
-    }
-    public int getPageno() {
-        return pageno;
+
+    public int getPageNo() {
+        return pageNo;
     }
 
-    public void setPerpage(int perpage) {
-        this.perpage = perpage;
-    }
-    public int getPerpage() {
-        return perpage;
+    public void setPageNo(int pageNo) {
+        this.pageNo = pageNo;
     }
 
-    public void setTotalcount(int totalcount) {
-        this.totalcount = totalcount;
+    public int getPerPage() {
+        return perPage;
     }
-    public int getTotalcount() {
-        return totalcount;
+
+    public void setPerPage(int perPage) {
+        this.perPage = perPage;
+    }
+
+    public int getTotalCount() {
+        return totalCount;
+    }
+
+    public void setTotalCount(int totalCount) {
+        this.totalCount = totalCount;
+    }
+
+    public List<CertiListData> getData() {
+        return data;
     }
 
     public void setData(List<CertiListData> data) {
         this.data = data;
-    }
-    public List<CertiListData> getData() {
-        return data;
     }
 }

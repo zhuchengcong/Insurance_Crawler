@@ -1,15 +1,13 @@
 package com.radinfo.safe.domain.http;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.io.Serializable;
 
-public class CertiList implements Serializable {
-    private static final long serialVersionUID = 7812141862195638880L;
+public class ProposalBICI implements Serializable {
+    private static final long serialVersionUID = 33469590618190964L;
+
     private int status;
-    @JsonProperty("statusText")
     private String statusText;
-    private CertiListDTO data;
+    private ProposalBICIData data;
     public void setStatus(int status) {
         this.status = status;
     }
@@ -17,18 +15,17 @@ public class CertiList implements Serializable {
         return status;
     }
 
+    public void setStatusText(String statusText) {
+        this.statusText = statusText;
+    }
     public String getStatusText() {
         return statusText;
     }
 
-    public void setStatusText(String statusText) {
-        this.statusText = statusText;
-    }
-
-    public void setData(CertiListDTO data) {
+    public void setData(ProposalBICIData data) {
         this.data = data;
     }
-    public CertiListDTO getData() {
+    public ProposalBICIData getData() {
         return data;
     }
 }

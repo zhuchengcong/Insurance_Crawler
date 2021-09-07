@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SafeController {
 
-
+//test rad update
     @Autowired
     private Safeservice safeservice;
 

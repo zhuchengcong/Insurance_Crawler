@@ -69,6 +69,9 @@ public class Safemanager {
                 jsonStr = jsonObject.getString("data");
                 List<CertiListData> list=JSONObject.parseArray(jsonStr, CertiListData.class);
                 Safemanager.logger.info("App-safe SearchCopyCertiList:"+JSON.toJSONString(list));
+                for (CertiListData item:list){
+                    checkProposal(item.getCertiNo());
+                }
             }else {
                 Safemanager.logger.info("App-safe SearchCopyCertiList.false:"+certiListRequset.getQueryData().getLicenseNo());
                 return -1;
@@ -80,6 +83,60 @@ public class Safemanager {
         }
         return 0;
     }
+
+    //https://prd.urtrust.com.cn/carDomainApi/proposal/main/check/proposal/901032123101890086691
+    public static String checkProposal(String certiNo){//是否将车辆加入501032113100660000760协议下？
+        Safemanager.logger.info("checkProposal start:"+certiNo);
+        String jsonStr="";
+        try {
+            OkHttpClient client = new OkHttpClient().newBuilder()
+                    .build();
+            MediaType mediaType = MediaType.parse("text/plain");
+            RequestBody body = RequestBody.create(mediaType, "");
+            Request request = new Request.Builder()
+                    .url(Safemanager.safeUrl+"/carDomainApi/proposal/main/check/proposal/"+certiNo)
+                    .method("POST", body)
+                    .addHeader("AUTHOR-TOKEN", CacheManager.AUTHOR_TOKEN)
+                    .build();
+            Response response = client.newCall(request).execute();
+            jsonStr = response.body().string();
+            Safemanager.logger.info("checkProposal ：" + jsonStr);
+//            JSONObject jsonObject = JSONObject.parseObject(jsonStr.trim());
+//            jsonStr = jsonObject.getString("data");
+            proposalBICI(certiNo);
+        }catch (Exception e){
+            Safemanager.logger.error("checkProposal error:"+e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
+        return jsonStr;
+    }
+    // https://prd.urtrust.com.cn/carDomainApi/proposal/main/search/proposalBICI/901032123101890086691
+    public  static  String proposalBICI(String certiNo){//加载保单详情数据
+        Safemanager.logger.info("proposalBICI start:"+certiNo);
+        String jsonStr="";
+        try{
+            OkHttpClient client = new OkHttpClient().newBuilder()
+                    .build();
+            MediaType mediaType = MediaType.parse("text/plain");
+            RequestBody body = RequestBody.create(mediaType, "");
+            Request request = new Request.Builder()
+                    .url(Safemanager.safeUrl+"/carDomainApi/proposal/main/search/proposalBICI/"+certiNo)
+                    .method("POST", body)
+                    .addHeader("AUTHOR-TOKEN", CacheManager.AUTHOR_TOKEN)
+                    .build();
+            Response response = client.newCall(request).execute();
+            jsonStr = response.body().string();
+            Safemanager.logger.info("proposalBICI ：" + jsonStr);
+            JSONObject jsonObject = JSONObject.parseObject(jsonStr.trim());
+            jsonStr = jsonObject.getString("data");
+        }catch (Exception e){
+            Safemanager.logger.error("proposalBICI error:"+e.getMessage());
+            e.printStackTrace();
+        }
+        return jsonStr;
+    }
+
     public static  synchronized  int login(LoginRequest loginRequest){
         Safemanager.logger.info(" App-safe login .start：" + loginRequest.getUserCode());
         try {

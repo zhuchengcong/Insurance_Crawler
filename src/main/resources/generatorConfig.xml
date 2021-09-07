@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <!--<properties resource="jdbc.properties"></properties>-->
+    <!--数据库驱动包位置-->
+    <classPathEntry location="D:/apache-maven-3.6.1/repository/mysql/mysql-connector-java/5.1.44/mysql-connector-java-5.1.44.jar" />
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <!--数据库URL、用户名、密码-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://81.69.248.6:3306/Insurance_policy_system?useUnicode=true" userId="root" password="u$$3g1a@eezk6w*W">
+        </jdbcConnection>
+
+
+        <!--生成模型包的位置 -->
+        <javaModelGenerator targetPackage="com.radinfo.safe.domain"
+                            targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!--生成映射文件的包名和位置-->
+        <sqlMapGenerator targetPackage="Mapping"  targetProject="./src/main/resources">
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+
+        <!--生成映射dao（Mapper）的包名和位置-->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.radinfo.safe.mapper" targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <!--需要生成那些数据库（更改tableName和domainObjectName）-->
+        <table tableName="policy_input" domainObjectName="PolicyInput" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false"                enableSelectByExample="false" selectByExampleQueryId="false"  >
+        </table>
+
+    </context>
+</generatorConfiguration>

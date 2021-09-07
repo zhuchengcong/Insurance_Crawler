@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.radinfo.safe.mapper.PolicyInputMapper" >
+  <resultMap id="BaseResultMap" type="com.radinfo.safe.domain.PolicyInput" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="ltbts" property="ltbts" jdbcType="INTEGER" />
+    <result column="pxrq" property="pxrq" jdbcType="VARCHAR" />
+    <result column="jqbxqbrq" property="jqbxqbrq" jdbcType="VARCHAR" />
+    <result column="sybxqbrq" property="sybxqbrq" jdbcType="VARCHAR" />
+    <result column="cph" property="cph" jdbcType="VARCHAR" />
+    <result column="syxz" property="syxz" jdbcType="VARCHAR" />
+    <result column="tbr" property="tbr" jdbcType="VARCHAR" />
+    <result column="bbxr" property="bbxr" jdbcType="VARCHAR" />
+    <result column="xszcz" property="xszcz" jdbcType="VARCHAR" />
+    <result column="cjh" property="cjh" jdbcType="VARCHAR" />
+    <result column="fdjh" property="fdjh" jdbcType="VARCHAR" />
+    <result column="xz" property="xz" jdbcType="VARCHAR" />
+    <result column="syxje" property="syxje" jdbcType="DECIMAL" />
+    <result column="jqxje" property="jqxje" jdbcType="DECIMAL" />
+    <result column="ccsje" property="ccsje" jdbcType="DECIMAL" />
+    <result column="hjje" property="hjje" jdbcType="DECIMAL" />
+    <result column="lxcbnx" property="lxcbnx" jdbcType="INTEGER" />
+    <result column="cxcs" property="cxcs" jdbcType="INTEGER" />
+    <result column="wzcs" property="wzcs" jdbcType="INTEGER" />
+    <result column="cpcx" property="cpcx" jdbcType="VARCHAR" />
+    <result column="hdzks" property="hdzks" jdbcType="INTEGER" />
+    <result column="cdny" property="cdny" jdbcType="VARCHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="create_by" property="createBy" jdbcType="BIGINT" />
+    <result column="gmt_modify" property="gmtModify" jdbcType="TIMESTAMP" />
+    <result column="modify_by" property="modifyBy" jdbcType="BIGINT" />
+    <result column="active" property="active" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, ltbts, pxrq, jqbxqbrq, sybxqbrq, cph, syxz, tbr, bbxr, xszcz, cjh, fdjh, xz, 
+    syxje, jqxje, ccsje, hjje, lxcbnx, cxcs, wzcs, cpcx, hdzks, cdny, gmt_create, create_by, 
+    gmt_modify, modify_by, active
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from policy_input
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from policy_input
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.radinfo.safe.domain.PolicyInput" >
+    insert into policy_input (id, ltbts, pxrq, 
+      jqbxqbrq, sybxqbrq, cph, 
+      syxz, tbr, bbxr, xszcz, 
+      cjh, fdjh, xz, syxje, 
+      jqxje, ccsje, hjje, 
+      lxcbnx, cxcs, wzcs, 
+      cpcx, hdzks, cdny, 
+      gmt_create, create_by, gmt_modify, 
+      modify_by, active)
+    values (#{id,jdbcType=INTEGER}, #{ltbts,jdbcType=INTEGER}, #{pxrq,jdbcType=VARCHAR}, 
+      #{jqbxqbrq,jdbcType=VARCHAR}, #{sybxqbrq,jdbcType=VARCHAR}, #{cph,jdbcType=VARCHAR}, 
+      #{syxz,jdbcType=VARCHAR}, #{tbr,jdbcType=VARCHAR}, #{bbxr,jdbcType=VARCHAR}, #{xszcz,jdbcType=VARCHAR}, 
+      #{cjh,jdbcType=VARCHAR}, #{fdjh,jdbcType=VARCHAR}, #{xz,jdbcType=VARCHAR}, #{syxje,jdbcType=DECIMAL}, 
+      #{jqxje,jdbcType=DECIMAL}, #{ccsje,jdbcType=DECIMAL}, #{hjje,jdbcType=DECIMAL}, 
+      #{lxcbnx,jdbcType=INTEGER}, #{cxcs,jdbcType=INTEGER}, #{wzcs,jdbcType=INTEGER}, 
+      #{cpcx,jdbcType=VARCHAR}, #{hdzks,jdbcType=INTEGER}, #{cdny,jdbcType=VARCHAR}, 
+      #{gmtCreate,jdbcType=TIMESTAMP}, #{createBy,jdbcType=BIGINT}, #{gmtModify,jdbcType=TIMESTAMP}, 
+      #{modifyBy,jdbcType=BIGINT}, #{active,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.radinfo.safe.domain.PolicyInput" >
+    insert into policy_input
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="ltbts != null" >
+        ltbts,
+      </if>
+      <if test="pxrq != null" >
+        pxrq,
+      </if>
+      <if test="jqbxqbrq != null" >
+        jqbxqbrq,
+      </if>
+      <if test="sybxqbrq != null" >
+        sybxqbrq,
+      </if>
+      <if test="cph != null" >
+        cph,
+      </if>
+      <if test="syxz != null" >
+        syxz,
+      </if>
+      <if test="tbr != null" >
+        tbr,
+      </if>
+      <if test="bbxr != null" >
+        bbxr,
+      </if>
+      <if test="xszcz != null" >
+        xszcz,
+      </if>
+      <if test="cjh != null" >
+        cjh,
+      </if>
+      <if test="fdjh != null" >
+        fdjh,
+      </if>
+      <if test="xz != null" >
+        xz,
+      </if>
+      <if test="syxje != null" >
+        syxje,
+      </if>
+      <if test="jqxje != null" >
+        jqxje,
+      </if>
+      <if test="ccsje != null" >
+        ccsje,
+      </if>
+      <if test="hjje != null" >
+        hjje,
+      </if>
+      <if test="lxcbnx != null" >
+        lxcbnx,
+      </if>
+      <if test="cxcs != null" >
+        cxcs,
+      </if>
+      <if test="wzcs != null" >
+        wzcs,
+      </if>
+      <if test="cpcx != null" >
+        cpcx,
+      </if>
+      <if test="hdzks != null" >
+        hdzks,
+      </if>
+      <if test="cdny != null" >
+        cdny,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="gmtModify != null" >
+        gmt_modify,
+      </if>
+      <if test="modifyBy != null" >
+        modify_by,
+      </if>
+      <if test="active != null" >
+        active,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="ltbts != null" >
+        #{ltbts,jdbcType=INTEGER},
+      </if>
+      <if test="pxrq != null" >
+        #{pxrq,jdbcType=VARCHAR},
+      </if>
+      <if test="jqbxqbrq != null" >
+        #{jqbxqbrq,jdbcType=VARCHAR},
+      </if>
+      <if test="sybxqbrq != null" >
+        #{sybxqbrq,jdbcType=VARCHAR},
+      </if>
+      <if test="cph != null" >
+        #{cph,jdbcType=VARCHAR},
+      </if>
+      <if test="syxz != null" >
+        #{syxz,jdbcType=VARCHAR},
+      </if>
+      <if test="tbr != null" >
+        #{tbr,jdbcType=VARCHAR},
+      </if>
+      <if test="bbxr != null" >
+        #{bbxr,jdbcType=VARCHAR},
+      </if>
+      <if test="xszcz != null" >
+        #{xszcz,jdbcType=VARCHAR},
+      </if>
+      <if test="cjh != null" >
+        #{cjh,jdbcType=VARCHAR},
+      </if>
+      <if test="fdjh != null" >
+        #{fdjh,jdbcType=VARCHAR},
+      </if>
+      <if test="xz != null" >
+        #{xz,jdbcType=VARCHAR},
+      </if>
+      <if test="syxje != null" >
+        #{syxje,jdbcType=DECIMAL},
+      </if>
+      <if test="jqxje != null" >
+        #{jqxje,jdbcType=DECIMAL},
+      </if>
+      <if test="ccsje != null" >
+        #{ccsje,jdbcType=DECIMAL},
+      </if>
+      <if test="hjje != null" >
+        #{hjje,jdbcType=DECIMAL},
+      </if>
+      <if test="lxcbnx != null" >
+        #{lxcbnx,jdbcType=INTEGER},
+      </if>
+      <if test="cxcs != null" >
+        #{cxcs,jdbcType=INTEGER},
+      </if>
+      <if test="wzcs != null" >
+        #{wzcs,jdbcType=INTEGER},
+      </if>
+      <if test="cpcx != null" >
+        #{cpcx,jdbcType=VARCHAR},
+      </if>
+      <if test="hdzks != null" >
+        #{hdzks,jdbcType=INTEGER},
+      </if>
+      <if test="cdny != null" >
+        #{cdny,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="gmtModify != null" >
+        #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null" >
+        #{modifyBy,jdbcType=BIGINT},
+      </if>
+      <if test="active != null" >
+        #{active,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.radinfo.safe.domain.PolicyInput" >
+    update policy_input
+    <set >
+      <if test="ltbts != null" >
+        ltbts = #{ltbts,jdbcType=INTEGER},
+      </if>
+      <if test="pxrq != null" >
+        pxrq = #{pxrq,jdbcType=VARCHAR},
+      </if>
+      <if test="jqbxqbrq != null" >
+        jqbxqbrq = #{jqbxqbrq,jdbcType=VARCHAR},
+      </if>
+      <if test="sybxqbrq != null" >
+        sybxqbrq = #{sybxqbrq,jdbcType=VARCHAR},
+      </if>
+      <if test="cph != null" >
+        cph = #{cph,jdbcType=VARCHAR},
+      </if>
+      <if test="syxz != null" >
+        syxz = #{syxz,jdbcType=VARCHAR},
+      </if>
+      <if test="tbr != null" >
+        tbr = #{tbr,jdbcType=VARCHAR},
+      </if>
+      <if test="bbxr != null" >
+        bbxr = #{bbxr,jdbcType=VARCHAR},
+      </if>
+      <if test="xszcz != null" >
+        xszcz = #{xszcz,jdbcType=VARCHAR},
+      </if>
+      <if test="cjh != null" >
+        cjh = #{cjh,jdbcType=VARCHAR},
+      </if>
+      <if test="fdjh != null" >
+        fdjh = #{fdjh,jdbcType=VARCHAR},
+      </if>
+      <if test="xz != null" >
+        xz = #{xz,jdbcType=VARCHAR},
+      </if>
+      <if test="syxje != null" >
+        syxje = #{syxje,jdbcType=DECIMAL},
+      </if>
+      <if test="jqxje != null" >
+        jqxje = #{jqxje,jdbcType=DECIMAL},
+      </if>
+      <if test="ccsje != null" >
+        ccsje = #{ccsje,jdbcType=DECIMAL},
+      </if>
+      <if test="hjje != null" >
+        hjje = #{hjje,jdbcType=DECIMAL},
+      </if>
+      <if test="lxcbnx != null" >
+        lxcbnx = #{lxcbnx,jdbcType=INTEGER},
+      </if>
+      <if test="cxcs != null" >
+        cxcs = #{cxcs,jdbcType=INTEGER},
+      </if>
+      <if test="wzcs != null" >
+        wzcs = #{wzcs,jdbcType=INTEGER},
+      </if>
+      <if test="cpcx != null" >
+        cpcx = #{cpcx,jdbcType=VARCHAR},
+      </if>
+      <if test="hdzks != null" >
+        hdzks = #{hdzks,jdbcType=INTEGER},
+      </if>
+      <if test="cdny != null" >
+        cdny = #{cdny,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="gmtModify != null" >
+        gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null" >
+        modify_by = #{modifyBy,jdbcType=BIGINT},
+      </if>
+      <if test="active != null" >
+        active = #{active,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.radinfo.safe.domain.PolicyInput" >
+    update policy_input
+    set ltbts = #{ltbts,jdbcType=INTEGER},
+      pxrq = #{pxrq,jdbcType=VARCHAR},
+      jqbxqbrq = #{jqbxqbrq,jdbcType=VARCHAR},
+      sybxqbrq = #{sybxqbrq,jdbcType=VARCHAR},
+      cph = #{cph,jdbcType=VARCHAR},
+      syxz = #{syxz,jdbcType=VARCHAR},
+      tbr = #{tbr,jdbcType=VARCHAR},
+      bbxr = #{bbxr,jdbcType=VARCHAR},
+      xszcz = #{xszcz,jdbcType=VARCHAR},
+      cjh = #{cjh,jdbcType=VARCHAR},
+      fdjh = #{fdjh,jdbcType=VARCHAR},
+      xz = #{xz,jdbcType=VARCHAR},
+      syxje = #{syxje,jdbcType=DECIMAL},
+      jqxje = #{jqxje,jdbcType=DECIMAL},
+      ccsje = #{ccsje,jdbcType=DECIMAL},
+      hjje = #{hjje,jdbcType=DECIMAL},
+      lxcbnx = #{lxcbnx,jdbcType=INTEGER},
+      cxcs = #{cxcs,jdbcType=INTEGER},
+      wzcs = #{wzcs,jdbcType=INTEGER},
+      cpcx = #{cpcx,jdbcType=VARCHAR},
+      hdzks = #{hdzks,jdbcType=INTEGER},
+      cdny = #{cdny,jdbcType=VARCHAR},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=BIGINT},
+      gmt_modify = #{gmtModify,jdbcType=TIMESTAMP},
+      modify_by = #{modifyBy,jdbcType=BIGINT},
+      active = #{active,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

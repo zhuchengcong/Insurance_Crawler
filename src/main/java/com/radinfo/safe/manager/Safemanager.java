@@ -497,7 +497,7 @@ public class Safemanager {
 //                "hideLoading":false
 //        }
         return "";
-        
+
     }
 
     public static  synchronized  int login(LoginRequest loginRequest){

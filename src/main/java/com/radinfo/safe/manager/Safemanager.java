@@ -167,7 +167,7 @@ public class Safemanager {
         try{
             OkHttpClient client = new OkHttpClient().newBuilder()
                     .build();
-            MediaType mediaType = MediaType.parse("text/plain");
+            MediaType mediaType = MediaType.parse("application/json;charset=UTF-8");
             RequestBody body = RequestBody.create(mediaType, JSON.toJSONString(calculatePremiumAllRequest));
             Request request = new Request.Builder()
                     .url(Safemanager.safeUrl+"/carDomainApi/proposal/main/calculatePremiumAll")

@@ -26,6 +26,7 @@ public class Safemanager {
 
     @Value("${radinfo.other.safe.url}")
     private  String safeUrl;
+        
 
     @PostConstruct
     public void init(){

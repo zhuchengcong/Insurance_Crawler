@@ -36,7 +36,7 @@ public class Safemanager {
         Safemanager.safeUrl=this.safeUrl;
     }
 
-    public static  synchronized  int SearchCopyCertiList(String carNumber,String ){
+    public static  synchronized  int SearchCopyCertiList(String carNumber){
         Safemanager.logger.info("通过车牌查询保单列表 App-safe SearchCopyCertiList .start：" + carNumber);
         CertiListRequset certiListRequset=new CertiListRequset();
         CertiListRequset.Querydata querydata=new CertiListRequset().new Querydata();

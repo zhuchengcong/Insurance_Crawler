@@ -36,12 +36,13 @@ public class Safemanager {
         Safemanager.safeUrl=this.safeUrl;
     }
 
-    public static  synchronized  int SearchCopyCertiList(String carNumber){
+    public static  synchronized  int SearchCopyCertiList(String carNumber,String proposalNo){
         Safemanager.logger.info("通过车牌查询保单列表 App-safe SearchCopyCertiList .start：" + carNumber);
         CertiListRequset certiListRequset=new CertiListRequset();
         CertiListRequset.Querydata querydata=new CertiListRequset().new Querydata();
         CertiListRequset.Pager pager=new CertiListRequset().new Pager();
         querydata.setLicenseNo(carNumber);//车牌号
+        querydata.setProposalNo(proposalNo);//保单号
         certiListRequset.setQueryData(querydata);
         certiListRequset.setPager(pager);
         Safemanager.logger.info("App-safe SearchCopyCertiList .certiListRequset：" + JSON.toJSONString(certiListRequset));

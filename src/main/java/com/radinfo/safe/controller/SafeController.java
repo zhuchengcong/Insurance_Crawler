@@ -4,10 +4,7 @@ import com.radinfo.safe.request.LoginRequest;
 import com.radinfo.safe.service.Safeservice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class SafeController {
@@ -24,8 +21,9 @@ public class SafeController {
     }
 
     @RequestMapping(value = "/search/certiList", produces = "application/json;charset=utf-8",method = RequestMethod.GET,consumes = MediaType.APPLICATION_JSON_UTF8_VALUE )
-    public int searchCertiList(String carNumber) {
-        return safeservice.SearchCopyCertiList(carNumber);
+    public int searchCertiList(@RequestParam(value = "carNumber", required = false) String carNumber,
+                               @RequestParam(value = "proposalNo", required = false) String proposalNo) {
+        return safeservice.SearchCopyCertiList(carNumber,proposalNo);
     }
 
 }

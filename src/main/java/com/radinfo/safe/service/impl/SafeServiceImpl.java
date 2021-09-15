@@ -19,7 +19,7 @@ public class SafeServiceImpl implements Safeservice {
     }
 
     @Override
-    public int SearchCopyCertiList(String CarNumber) {
-        return safemanager.SearchCopyCertiList(CarNumber);
+    public int SearchCopyCertiList(String CarNumber,String proposalNo) {
+        return safemanager.SearchCopyCertiList(CarNumber,proposalNo);
     }
 }

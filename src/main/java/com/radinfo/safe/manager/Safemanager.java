@@ -156,14 +156,53 @@ public class Safemanager {
         return "";
     }
 
+// "insuredCode":"G31002019000503",-----------TEST
+    public  static synchronized String GetBIDataPrpMainInsuredCode(String name){//中国（上海）自由贸易试验区康桥东路1号6幢1层150室
+        String jsonStr="";
+        try{
+            OkHttpClient client = new OkHttpClient().newBuilder()
+                    .build();
+            MediaType mediaType = MediaType.parse("application/json;charset=UTF-8");
+            RequestBody body = RequestBody.create(mediaType, JSON.toJSONString(name));
+            Request request = new Request.Builder()
+                    .url(Safemanager.safeUrl+"/carDomainApi/proposal/main/calculatePremiumAll")//ti
+                    .method("POST", body)
+                    .addHeader("AUTHOR-TOKEN", CacheManager.AUTHOR_TOKEN)
+                    .build();
+            Response response = client.newCall(request).execute();
+            jsonStr = response.body().string();
+            Safemanager.logger.info("calculatePremiumAll ：" + jsonStr);
+            JSONObject jsonObject = JSONObject.parseObject(jsonStr.trim());//1
+            jsonStr = jsonObject.getString("data");
 
+            jsonObject = JSONObject.parseObject(jsonStr.trim());//2
+            jsonStr= jsonObject.getString("code");
+            //获取合并计算后详情数据
+            return jsonStr;
+        }catch (Exception e){
+            Safemanager.logger.error("calculatePremiumAll error:"+e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
 
+    }
    // https://prd.urtrust.com.cn/carDomainApi/proposal/main/calculatePremiumAll
     public static synchronized  String calculatePremiumAll(CalculatePremiumAllRequest calculatePremiumAllRequest){//合并计算
         Safemanager.logger.info("合并计算 calculatePremiumAll start:");
         String jsonStr="";
+
+
         //重新赋值 举列子
         calculatePremiumAllRequest.getInsuranceBIData().getPrpMain().setGuangBoCertiNo("11111111111111111111111111111111111");//重新赋值
+        String code=  GetBIDataPrpMainInsuredCode("用公司名字查询返回带吗");
+        if (code==null){
+            Safemanager.logger.error("合并计算 calculatePremiumAll error: code is null--:"+calculatePremiumAllRequest.getInsuranceBIData().getPrpMain().getGuangBoCertiNo());
+            return null;
+        }
+        calculatePremiumAllRequest.getInsuranceBIData().getPrpMain().setInsuredCode(code);//重新赋值
+
+
+
         //输出赋值后的入参
         Safemanager.logger.info(" calculatePremiumAllRequest :"+JSON.toJSONString(calculatePremiumAllRequest));
         try{
